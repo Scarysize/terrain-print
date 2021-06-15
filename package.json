@@ -1,0 +1,23 @@
+{
+  "name": "terrain-print",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --mode development --watch ./index.js",
+    "build": "webpack --mode production ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@turf/distance": "^6.3.0",
+    "mapbox-gl": "^2.3.0",
+    "ndarray": "^1.0.19",
+    "three": "^0.128.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
+}

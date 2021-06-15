@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>terrain-print</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      height: 100%;
+    }
+
+    #main-map-container {
+      position: relative;
+      height: 100%;
+    }
+
+    #map,
+    #preview canvas {
+      height: 100%;
+    }
+
+    #offscreen-map {
+      height: 500px;
+      width: 500px;
+      position: absolute;
+    }
+
+    .hidden {
+      top: -100%;
+      left: -100%;
+    }
+
+    .debugging {
+      top: 0;
+      left: 0;
+      z-index: 20;
+    }
+
+    #crosshair {
+      height: 500px;
+      width: 500px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 10;
+      border: 1pt solid black;
+    }
+
+    #preview canvas {
+      width: 100%;
+    }
+
+    header {
+      background-color: white;
+      position: fixed;
+      top: 0;
+      height: 30px;
+      z-index: 10;
+      width: 100%;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="controls">
+      <input type="range" min="0" max="3" step="0.0001" value="1">
+      <button
+        onclick="$el = document.querySelector('.controls input'); $el.value = 1; $el.dispatchEvent(new Event('input'))">reset</button>
+      <button id="export-button">export stl</button>
+    </div>
+  </header>
+  <main>
+    <div id=" maps">
+      <div id="main-map-container">
+        <div id="map"></div>
+        <div id="crosshair"></div>
+      </div>
+      <div id="offscreen-map" class="hidden"></div>
+    </div>
+    <div id="preview">
+      <canvas></canvas>
+    </div>
+  </main>
+  <script src="dist/main.js"></script>
+</body>
+
+</html>
